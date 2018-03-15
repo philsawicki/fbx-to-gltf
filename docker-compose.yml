@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+
+  # Redis storage:
+  redis:
+    image: redis:4.0.8-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis-data:/data
+
+  # Converter process for FBX to glTF:
+  converter:
+    build:
+      context: ./
+      dockerfile: ./queue/Dockerfile
+    volumes:
+      - ./projects:/home/node/app/projects
+      - ./tmp:/home/node/app/tmp
+    depends_on:
+      - redis
+    environment:
+      APPLICATION_PORT: 3000
+      REDIS_PORT: 6379
+      REDIS_HOST: redis
+
+  # Web front-end:
+  web:
+    build: .
+    volumes:
+      - ./projects:/home/node/app/projects
+      - ./tmp:/home/node/app/tmp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+      - converter
+    environment:
+      APPLICATION_PORT: 3000
+      REDIS_PORT: 6379
+      REDIS_HOST: redis

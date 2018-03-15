@@ -1,0 +1,15 @@
+.git
+__tests__
+coverage
+docs
+node_modules
+projects
+redis-data
+tmp
+.editorconfig
+.eslintignore
+.eslintrc.json
+.gitignore
+jest.config.coverage.js
+jest.config.js
+README.md

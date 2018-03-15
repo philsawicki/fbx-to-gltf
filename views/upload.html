@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="FBX to glTF 2.0 Converter">
+        <meta name="author" content="Philippe Sawicki">
+
+        <title>FBX to glTF 2.0 Converter</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-inverse bg-inverse">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand">FBX to glTF 2.0 Converter</a>
+            </div>
+        </div>
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">FBX to glTF 2.0 Converter</h1>
+                <p class="lead text-muted">Create WebVR-ready assets from any FBX file</p>
+                <p>
+                    <a href="https://webvr.rocks" class="btn btn-info" target="_blank">Get WebVR</a>
+                    <a href="https://en.wikipedia.org/wiki/GlTF" class="btn btn-secondary" target="_blank">Learn more</a>
+                </p>
+            </div>
+        </section>
+
+        <div class="fbx-converter text-muted">
+            <div class="container">
+                <div class="card-deck">
+                    <div class="card">
+                        <div class="card-img-top text-center">
+                            <i class="fas fa-upload fa-fw fa-4x"></i>
+                        </div>
+                        <div class="card-block">
+                            <h4 class="card-title">Step 1 <small>Upload FBX</small></h4>
+                            <p class="card-text">Upload a ZIP file containing your FBX file and its textures:</p>
+                            <form>
+                                <fieldset id="uploadFormFieldset">
+                                    <div class="form-group">
+                                        <!--<label for="uploadFile">ZIP file</label>-->
+                                        <input type="file" class="form-control form-control-sm" id="uploadFile">
+                                    </div>
+                                    <div class="form-group">
+                                        <button id="uploadZIP" type="submit" class="btn btn-info btn-block">Upload</button>
+                                    </div>
+                                    <div id= "progressBarContainer" class="progress" hidden>
+                                        <div id="uploadProgressBar" class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img-top text-center">
+                            <i id="conversion-animation" class="fas fa-cog fa-fw fa-4x text-center"></i>
+                        </div>
+                        <div class="card-block">
+                            <h4 class="card-title">Step 2 <small>Convert File</small></h4>
+                            <p class="card-text">Let our service generate the glTF 2.0 file for your FBX.</p>
+                            <p class="card-text">
+                                <div id="jobStatusInactive" class="alert alert-info" role="alert" hidden>
+                                    Your file is currently in queue and about to be processed.
+                                </div>
+                            </p>
+                            <p class="card-text">
+                                <div id="jobStatusActive" class="alert alert-info" role="alert" hidden>
+                                    Your file is currently being processed.
+                                </div>
+                            </p>
+                            <p class="card-text">
+                                <div id="jobStatusComplete" class="alert alert-success" role="alert" hidden>
+                                    <p>Your file has been processed successfully.</p>
+                                    <ul class="list-unstyled" id="gltfPresentationLinks" hidden>
+                                        <li><i class="fas fa-eye fa-fw"></i> <a id="viewGLTFLink" href="#" class="text-info">View your glTF Model</a></li>
+                                        <li><i class="fas fa-download fa-fw"></i> <a id="downloadGLTFLink" href="#" class="text-info">Download your glTF Model</a></li>
+                                    </ul>
+                                </div>
+                            </p>
+                            <p class="card-text">
+                                <div id="jobStatusFailed" class="alert alert-danger" role="alert" hidden>
+                                    <p>There was an error processing your file.</p>
+                                    <p id="errorDetails"></p>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-muted">
+            <div class="container">
+                <p class="float-right">
+                    <a href="#" class="text-info">Back to top</a>
+                </p>
+                <p><em>3ds Max</em> Innovation Day Project</p>
+            </div>
+        </footer>
+
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        <script async defer src="/js/upload.js"></script>
+    </body>
+</html>

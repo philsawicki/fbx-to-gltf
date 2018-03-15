@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Philippe Sawicki">
+    <meta name="description" content="FBX to glTF 2.0 Viewer">
+
+    <title>FBX to glTF 2.0 Viewer</title>
+
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-teleport-controls@0.2.x/dist/aframe-teleport-controls.min.js"></script>
+</head>
+<body>
+
+    <a-scene>
+        <a-assets>
+            <!-- glTF 2.0 Model: -->
+            <a-asset-item id="model" src="<%= file.glbFilePath %>"></a-asset-item>
+
+            <!-- Scene textures: -->
+            <img crossorigin="anonymous" id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+            <img crossorigin="anonymous" id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+        </a-assets>
+
+        <!-- Scene elements: -->
+        <a-entity position="0 0 -4">
+            <a-cylinder id="ground" src="#groundTexture" radius="30" height="0.1"></a-cylinder>
+            <a-sky id="sky" src="#skyTexture" theta-length="90" radius="30"></a-sky>
+            <a-entity id="gltfModel" gltf-model="#model"></a-entity>
+        </a-entity>
+
+        <!-- Controllers: -->
+        <a-entity id="rightHand"
+            vive-controls="hand: right"
+            microsoft-motion-controls="hand: right"
+            oculus-touch-controls="hand: right"
+            daydream-controls="right"
+            gearvr-controls="right"
+            teleport-controls="type: parabolic; button: trigger; collisionEntities: #ground"></a-entity>
+        <a-entity id="leftHand"
+            vive-controls="hand: left"
+            oculus-touch-controls="hand: left"
+            microsoft-motion-controls="hand: left"
+            daydream-controls="left"
+            gearvr-controls="left"
+            teleport-controls="type: parabolic; button: trigger; collisionEntities: #ground"></a-entity>
+    </a-scene>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+node_modules
+projects
+redis-data
+tmp
+coverage
