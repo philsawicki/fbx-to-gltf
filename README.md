@@ -22,7 +22,7 @@ HTML test coverage can alternatively be generated using `npm run generate:covera
 ## Screenshots
 
 _WebVR Viewer demo, using teleport controls:_  
-![WebVR Viewer demo](https://media.giphy.com/media/WS5vpFSjgu1W12gDNY/giphy.gif)
+![WebVR Viewer demo](https://i.giphy.com/media/WS5vpFSjgu1W12gDNY/giphy.gif)
 
 _Upload page:_  
 ![Upload page](./docs/screenshot-upload-page.png)
